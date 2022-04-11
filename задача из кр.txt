@@ -1,0 +1,47 @@
+Задание:
+Сделать строку длиной 20 символов типа char.
+Считать в нее символы из командной строки.
+Изменить строку: все цифры сдвигаются на -1 (1 переходит в 0, 2 - в 1, и т.д., 0 переходит в 9)
+Распечатать ее.
+
+section .data
+	text db "Изменененная строка: "
+section .bss
+	str resb 20 ;резервируем 20 байт для строки
+section .text
+	global_start
+_start:
+	call _readstr
+	call _printtext
+	call _printfstr
+
+	mov rax, 60
+	mov rdi, 0
+
+	
+	syscall
+
+
+_printftext:		;напечатает слова Измененная строка:
+	mov rax, 1
+	mov rdi, 1		
+	mov rsi, text
+	mov rdx, 21
+	syscall
+	ret
+	
+_printfstr:		;нужно как то изменить символы этой строки и это выведет полученную строку
+	mov rax, 1	; чтобы изменить строку может надо по одному считывать символы строки,
+				сохранять их в регистр и там менять значение
+	mov rdi, 1
+	mov rsi, str
+	mov rdx, 20
+	syscall
+	ret
+_readstr: 		;получить пользовательский ввод
+	mov rax, 0
+	mov rdi, 0
+	mov rsi, str	;в rsi лежат все введенные 20 символов
+	mov rdx, 20
+	syscall
+	ret
