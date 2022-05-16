@@ -12,7 +12,7 @@ int main(int argc, char *argv[]){       //https://ru.wikibooks.org/wiki/Язык
         return 1;
     }
     
-    char get_str;                            // сюда считывается текст из файла
+ 
     char str [] = "Hello world!";
     char str_new [] = "Separe aude!";
     char put_str[strlen (str)] = {0};       //  сохраним в этом массиве строку "Hello world!"
@@ -29,10 +29,6 @@ int main(int argc, char *argv[]){       //https://ru.wikibooks.org/wiki/Язык
             fseek(f, -strlen(str), 1);  // В параметрах: Указатель на структуру FILE, Количество байт начиная с первоначальной позиции, первоначальная позиция
             break;
         }
-
-        public string Replace (char str, char str_new);
-
-        fwrite()
 
     }
     if (fread(put_str, 1, strlen(str), f) == 0) {
